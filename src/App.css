@@ -1,0 +1,78 @@
+:root {
+  font-size: 1.1em;
+}
+
+body,
+#root {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2,
+h3 {
+  margin: 0;
+  padding: 0.5em;
+}
+
+button {
+  width: fit-content;
+  font-size: 1em;
+  font-weight: bold;
+  border: 0;
+  border-radius: 1em;
+  padding: 0.5em 2em;
+  margin-top: 1em;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#title {
+  font-size: 2em;
+  margin-top: 1em;
+}
+
+#prestartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: auto;
+}
+
+#startButton {
+  background-color: rgb(16, 192, 0);
+}
+
+.stopButton {
+  background-color: rgb(255, 64, 64);
+}
+
+#description {
+  width: 30%;
+  padding: 0.5em;
+  line-height: 1.5em;
+}
+
+.scenarioImage {
+  height: 10em;
+}
+
+.scenarioContainer,
+#postReactionContainer,
+#gameOverContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: auto;
+}
