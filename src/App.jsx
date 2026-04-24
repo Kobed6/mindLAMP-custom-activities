@@ -14,9 +14,11 @@ export default function App() {
   const [scenariosCompleted, setScenariosCompleted] = useState(0)
   const [difficulty, setDifficulty] = useState(0)
   const [gameOver, setGameOver] = useState(false)
+  const [startTime, setStartTime] = useState(0)
 
   function startGame() {
     setGameStarted(true)
+    setStartTime(new Date().getTime())
   }
 
   function handleRestart() {
@@ -24,6 +26,24 @@ export default function App() {
     setPoints(0)
     setScenariosCompleted(0)
     setGameOver(false)
+  }
+
+  function handleExit() {
+    window.parent.postMessage(
+        JSON.stringify({
+            timestamp: new Date().getTime(),
+            duration: new Date().getTime() - startTime,
+            static_data: {
+                score: points
+            },
+            temporal_slices: [],        
+            clickBack: true,
+        }),
+        "*"
+    );
+
+    window.location.hash = '/';
+    window.dispatchEvent(new PopStateEvent('popstate'));
   }
 
   function handleScoring(timeTook) {
@@ -238,6 +258,7 @@ export default function App() {
           <h2>Game over!</h2>
           <h3>Your final score: {points}</h3>
           <button style={{ backgroundColor: "#0073FF" }} onClick={() => handleRestart()}>Start over</button>
+          <button style={{ backgroundColor: "#ff4040" }} onClick={() => handleExit()}>Exit Activity</button>
         </div>
       }
     </main>
